@@ -1,6 +1,6 @@
 # macOS Dotfiles
 
-macOS setup feat. **Zsh + Powerlevel10k**, **WezTerm**, **VS Code**, **Zed**, and **Homebrew**.
+macOS setup featuring **Zsh + Powerlevel10k**, **WezTerm**, **VS Code**, **Zed**, and **Homebrew**.
 All configs are maintained as direct file copies, NOT symlinks.
 
 ---
@@ -18,7 +18,7 @@ xcode-select --install
 Install Homebrew:
 
 ```bash
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+/bin/bash -c "$(curl -fsSL [https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh](https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh))"
 ```
 
 Add Homebrew to current session PATH:
@@ -29,9 +29,11 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 ---
 
-## 2. Clone, Install packages and configure
+## 2. Clone, Install Packages, and Configure
 
-Clone macos-dotfiles repository:
+### Clone Repository
+
+Create Developer workspace directory:
 
 ```bash
 mkdir -p ~/Developer
@@ -44,34 +46,33 @@ git clone https://github.com/blud0t/macos-dotfiles.git ~/Developer/macos-dotfile
 cd ~/Developer/macos-dotfiles
 ```
 
-OR
-Clone from GitLab:
+_OR_ Clone from GitLab:
 
 ```bash
 git clone https://gitlab.com/blud0t/macos-dotfiles.git ~/Developer/macos-dotfiles
 cd ~/Developer/macos-dotfiles
 ```
 
-Install basic formulae, casks (REQUIRED):
+---
+
+### Package & Font Installation
+
+Install basic formulae and shell utilities (REQUIRED):
 
 ```bash
 brew install bat eza fastfetch fnm fzf powerlevel10k pyenv tree tlrc yt-dlp zsh-autosuggestions zsh-syntax-highlighting
 ```
 
+Install core GUI applications and font (REQUIRED):
+
 ```bash
-brew install --cask --adopt visual-studio-code wezterm zed zen
+brew install --cask --adopt visual-studio-code wezterm@nightly zed zen font-caskaydia-mono-nerd-font
 ```
 
-Install ALL formulae, casks, and VS Code extensions (OPTIONAL):
+Install ALL formulae, casks, and VS Code extensions from Brewfile (OPTIONAL):
 
 ```bash
 brew bundle
-```
-
-Install font:
-
-```bash
-cp fonts/VertexMonoNF-Regular.ttf ~/Library/Fonts/
 ```
 
 Set up Node LTS via fnm:
@@ -81,9 +82,11 @@ fnm install --lts
 fnm default lts-latest
 ```
 
-Configuration:
+---
 
-Copy config files:
+### Apply Configurations
+
+Copy shell and terminal configs:
 
 ```bash
 cp .zshrc ~/.zshrc
@@ -91,7 +94,7 @@ cp .p10k.zsh ~/.p10k.zsh
 cp .wezterm.lua ~/.wezterm.lua
 ```
 
-VS Code config:
+Apply VS Code config and local Purple Fizz theme:
 
 ```bash
 mkdir -p "$HOME/Library/Application Support/Code/User"
@@ -100,7 +103,7 @@ mkdir -p ~/.vscode/extensions
 cp -r vscode/purpletheme ~/.vscode/extensions/
 ```
 
-Zed config:
+Apply Zed config and themes:
 
 ```bash
 mkdir -p ~/.config/zed/themes
@@ -108,7 +111,7 @@ cp zed/settings.json ~/.config/zed/settings.json
 cp zed/themes/*.json ~/.config/zed/themes/
 ```
 
-Reload shell and open Wezterm:
+Launch WezTerm:
 
 ```bash
 open -a WezTerm && (killall Terminal 2>/dev/null || true)
