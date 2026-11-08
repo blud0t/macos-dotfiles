@@ -2,7 +2,7 @@
   "name": "purple-fizz",
   "displayName": "Purple Fizz",
   "description": "Dark purple theme with popping text colors",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "publisher": "blud0t",
   "engines": {
     "vscode": "*"
