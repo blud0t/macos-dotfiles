@@ -1,5 +1,4 @@
 {
-  "$schema": "https://zed.dev/schema/themes/v0.2.0.json",
   "name": "Purple Fizz",
   "author": "blud0t",
   "themes": [
@@ -10,7 +9,7 @@
         "background": "#15111C",
         "border": "#361A52",
         "border.variant": "#2A1342",
-        "border.focused": "#A855F7",
+        "border.focused": "#A855F780",
         "elevated_surface.background": "#1A0B26",
         "surface.background": "#10051C",
         "title_bar.background": "#150824",
@@ -20,32 +19,29 @@
         "element.background": "#1A1523",
         "element.hover": "#8B3DFF40",
         "element.active": "#8B3DFF",
-        "element.selected": "#8B3DFF30",
+        "element.selected": "#8B3DFF75",
         "ghost_element.hover": "#8B3DFF40",
         "ghost_element.active": "#8B3DFF",
         "ghost_element.selected": "#8B3DFF30",
         "text": "#f8f8f2",
         "text.muted": "#C5B4D6",
-        "text.accent": "#A855F7",
-
+        "text.accent": "#E2B5FF",
         "tab.inactive_background": "#160921",
         "tab.active_background": "#15111C",
         "tab_bar.background": "#15081E",
-
         "editor.background": "#15111C",
         "editor.foreground": "#f8f8f2",
         "editor.gutter.background": "#15111C",
         "editor.invisible": "#352A45",
-        "editor.line_number": "#352A45",
-        "editor.active_line_number": "#FFFFFF",
+        "editor.line_number": "#5E4B75",
+        "editor.active_line_number": "#E2B5FF",
         "editor.active_line.background": "#1E1828",
-        "editor.document_highlight.read_background": "#A855F720",
-        "editor.indent_guide": "#423556",
-        "editor.indent_guide_active": "#A855F7",
-
+        "editor.document_highlight.read_background": "#A855F71A",
+        "editor.document_highlight.write_background": "#A855F730",
+        "editor.indent_guide": "#A855F750",
+        "editor.indent_guide_active": "#00FF0A",
         "terminal.background": "#15111C",
         "terminal.foreground": "#f8f8f2",
-
         "error": "#F44747",
         "error.background": "#F4474715",
         "error.border": "#F4474740",
@@ -58,15 +54,13 @@
         "hint": "#A094B0",
         "hint.background": "#A094B015",
         "hint.border": "#A094B040",
-
         "players": [
           {
             "cursor": "#f8f8f0",
-            "selection": "#8B3DFF40",
+            "selection": "#8B3DFF75",
             "background": "#A855F730"
           }
         ],
-
         "syntax": {
           "comment": { "color": "#8C8C8C", "font_style": "italic" },
           "string": { "color": "#FFEE99" },
