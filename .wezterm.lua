@@ -5,7 +5,7 @@ local config = wezterm.config_builder()
 
 -- Customsisations
 config.default_cursor_style = 'SteadyBar'
-config.font = wezterm.font_with_fallback({ "Vertex Mono NF", "Menlo", "monospace" })
+config.font = wezterm.font_with_fallback({ "CaskaydiaMono Nerd Font", "Menlo", "monospace" })
 config.font_size = 19
 config.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
 config.enable_tab_bar = true
@@ -13,6 +13,9 @@ config.line_height = 1.15
 config.window_decorations = "RESIZE"
 config.window_background_opacity = 0.975
 config.macos_window_background_blur = 10
+-- Disabling macOS' OPT key composition
+config.send_composed_key_when_left_alt_is_pressed = false
+config.send_composed_key_when_right_alt_is_pressed = false
 
 -- Colorscheme
 config.colors = {
