@@ -1,32 +1,24 @@
 {
-  // Workbench and general settings
+  // Workbench and general settings:
+  "workbench.colorTheme": "Purple Fizz",
   "workbench.startupEditor": "none",
   "workbench.tips.enabled": false,
   "workbench.secondarySideBar.defaultVisibility": "hidden",
-  "workbench.colorTheme": "Purple Fizz",
   "workbench.iconTheme": "material-icon-theme",
   "workbench.tree.renderIndentGuides": "always",
+  "workbench.editor.enablePreview": false,
+  "workbench.editor.empty.hint": "hidden",
+  "explorer.confirmDelete": false,
   "workbench.editorAssociations": {
     "*.sqlite": "default"
   },
-  // Extension settings
+  // Extension settings:
   "extensions.ignoreRecommendations": true,
-  // Prettier overrides
-  "[json]": {
-    "prettier.trailingComma": "none"
-  },
-  "[jsonc]": {
-    "prettier.trailingComma": "none"
-  },
-  "[markdown]": {
-    "prettier.proseWrap": "preserve"
-  },
-  "prettier.bracketSameLine": true,
 
-  // Misc
-  // "security.workspace.trust.enabled": false, //UNCOMMENT ONLY IF YOU KNOW WHAT YOU'RE DOING
-  // "security.workspace.trust.startupPrompt": "never", //UNCOMMENT ONLY IF YOU KNOW WHAT YOU'RE DOING
-  // "security.workspace.trust.untrustedFiles": "open", //UNCOMMENT ONLY IF YOU KNOW WHAT YOU'RE DOING
+  // Misc:
+  // "security.workspace.trust.enabled": false, // Uncomment IF you know your security practices
+  // "security.workspace.trust.startupPrompt": "never", // Uncomment IF you know your security practices
+  // "security.workspace.trust.untrustedFiles": "open", // Uncomment IF you know your security practices
   "chat.agent.enabled": false,
   "chat.checkpoints.enabled": false,
   "chat.disableAIFeatures": true,
@@ -37,8 +29,8 @@
   "telemetry.telemetryLevel": "off",
   "git.addAICoAuthor": "off",
 
-  // Editor settings
-  "editor.fontFamily": "'Vertex Mono NF', monospace",
+  // Editor settings:
+  "editor.fontFamily": "'CaskaydiaMono Nerd Font', monospace",
   "editor.fontLigatures": false,
   "editor.fontSize": 14,
   "editor.minimap.enabled": false,
@@ -46,23 +38,109 @@
   "editor.cursorBlinking": "smooth",
   "editor.cursorStyle": "line",
   "editor.cursorSmoothCaretAnimation": "on",
-  // Turn off bracket overlaps with indents
+  // Turn off bracket overlaps with indents:
   "editor.guides.bracketPairs": false,
-  // Grid based indent lines
+  // Grid based indent lines:
   "editor.guides.indentation": true,
-  // Code formatter
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  // Code formatters (Language scoped):
   "editor.formatOnSave": true,
-  // Native rendered indent colors
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2
+  },
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "prettier.trailingComma": "none"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "prettier.trailingComma": "none"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "prettier.proseWrap": "preserve"
+  },
+  "[yaml]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml",
+    "editor.tabSize": 2
+  },
+  "[python]": {
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.codeActionsOnSave": {
+      "source.fixAll": "explicit",
+      "source.organizeImports": "explicit"
+    }
+  },
+  "[c]": {
+    "editor.defaultFormatter": "ms-vscode.cpptools"
+  },
+  "[cpp]": {
+    "editor.defaultFormatter": "ms-vscode.cpptools"
+  },
+  "[terraform]": {
+    "editor.defaultFormatter": "hashicorp.terraform",
+    "editor.tabSize": 2
+  },
+  "[terraform-vars]": {
+    "editor.defaultFormatter": "hashicorp.terraform",
+    "editor.tabSize": 2
+  },
+  "[ansible]": {
+    "editor.defaultFormatter": "redhat.ansible",
+    "editor.tabSize": 2
+  },
+  "[feature]": {
+    "editor.defaultFormatter": "alexkrechik.cucumberautocomplete"
+  },
+  "[helm]": {
+    "editor.formatOnSave": false
+  },
+
+  // File associations:
+  "files.associations": {
+    "**/playbooks/**/*.yml": "ansible",
+    "**/roles/**/*.yml": "ansible",
+    "*playbook*.yml": "ansible"
+  },
+  // DevOps language servers & schemas:
+  "terraform.languageServer.enable": true,
+  "ansible.validation.lint.enabled": true,
+  "ansible.validation.lint.path": "ansible-lint",
+  "yaml.format.enable": true,
+  "yaml.schemas": {
+    "kubernetes": [
+      "*.k8s.yaml",
+      "*.k8s.yml",
+      "deployments/*.yaml",
+      "manifests/*.yaml"
+    ]
+  },
+  "yaml.customTags": ["!reference sequence"],
+
+  // Prettier base formatting:
+  "prettier.bracketSameLine": true,
+  // Native rendered indent colors:
   "workbench.colorCustomizations": {
-    // Inactive indent block colors
+    // Inactive indent block colors:
     "editorIndentGuide.background1": "#ffd70040", // 1. Yellow
     "editorIndentGuide.background2": "#00bfff40", // 2. Blue
     "editorIndentGuide.background3": "#ff149340", // 3. Pink
     "editorIndentGuide.background4": "#00ff7f40", // 4. Green
     "editorIndentGuide.background5": "#da70d640", // 5. Purple
     "editorIndentGuide.background6": "#ff8c0040", // 6. Orange
-    // Active indent block colors
+    // Active indent block colors:
     "editorIndentGuide.activeBackground1": "#ffd700",
     "editorIndentGuide.activeBackground2": "#00bfff",
     "editorIndentGuide.activeBackground3": "#ff1493",
@@ -70,11 +148,22 @@
     "editorIndentGuide.activeBackground5": "#da70d6",
     "editorIndentGuide.activeBackground6": "#ff8c00"
   },
-
-  // Terminal settings - Font, zsh plugins
+  // Code runner:
+  "code-runner.runInTerminal": true,
+  "code-runner.saveFileBeforeRun": false,
+  "code-runner.preserveFocus": true,
+  "code-runner.executorMap": {
+    "python": "$pythonPath -u $fullFileName",
+    "c": "cd $dir && gcc $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+    "cpp": "cd $dir && g++ -std=c++20 $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+    "kotlin": "cd $dir && kotlinc $fileName -include-runtime -d $fileNameWithoutExt.jar && java -jar $fileNameWithoutExt.jar",
+    "javascript": "node $fullFileName",
+    "typescript": "npx ts-node $fullFileName"
+  },
+  // Terminal settings - Font, zsh plugins:
   "terminal.integrated.cursorStyle": "line",
   "terminal.integrated.cursorBlinking": true,
-  "terminal.integrated.fontFamily": "'Vertex Mono NF', monospace",
+  "terminal.integrated.fontFamily": "'CaskaydiaMono Nerd Font', monospace",
   "terminal.integrated.fontSize": 16,
-  "terminal.integrated.fontLigatures": false
+  "terminal.integrated.initialHint": false
 }
