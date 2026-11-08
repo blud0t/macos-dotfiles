@@ -4,30 +4,40 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# 2// Static Homebrew Initialization (Saves 40ms vs eval brew shellenv)
+export HOMEBREW_PREFIX="/opt/homebrew"
+export HOMEBREW_CELLAR="/opt/homebrew/Cellar"
+export HOMEBREW_REPOSITORY="/opt/homebrew"
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
+export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:"
+export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}"
+export HOMEBREW_NO_UPGRADE_AUTO_UPDATES_CASKS=1
 
 source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 
-# 2// Zsh history
+# 3// Zsh history
 HISTSIZE=2000
 SAVEHIST=2000
 setopt INC_APPEND_HISTORY # Save history immediately
 setopt SHARE_HISTORY # Share history between all open shells
 setopt HIST_IGNORE_DUPS # Ignore duplicate commands
 setopt HIST_IGNORE_SPACE # Ignore mistyped space commands
+setopt HIST_IGNORE_ALL_DUPS # Erase older duplicates
+setopt HIST_REDUCE_BLANKS # Remove superfluous blanks
 
 
-# 3// Environment Variables & PATH
+# 4// Environment Variables & PATH
 export PATH="$HOME/.local/bin:$PATH"
 export HOMEBREW_NO_UPGRADE_AUTO_UPDATES_CASKS=1
 
 
-# 4// Version managers
-# / Pyenv
+# 5// Version managers
+# / Pyenv - fast init
 if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
+  eval "$(pyenv init - --no-rehash)"
 fi
 
 # / fnm (Fast Node Manager)
@@ -36,7 +46,23 @@ if command -v fnm 1>/dev/null 2>&1; then
 fi
 
 
-# 5// Aliases
+# 6// Completions (Must precede plugins)
+fpath=(
+  $HOMEBREW_PREFIX/share/zsh/site-functions
+  $HOME/.docker/completions
+  $fpath
+)
+
+autoload -Uz compinit
+# Cache check: Rebuild zcompdump only once per 24 hours
+if [[ -n ${ZDOTDIR:-$HOME}/.zcompdump(#qN.mh+24) || ! -f ${ZDOTDIR:-$HOME}/.zcompdump ]]; then
+  compinit
+else
+  compinit -C
+fi
+
+
+# 7// Aliases
 # / Eza with icons (Defined before syntax highlighting to ensure correct parsing)
 alias ls='eza --icons=auto --group-directories-first'
 alias ll='eza -la --icons=auto --group-directories-first'
@@ -53,6 +79,27 @@ alias zsh-reload="source ~/.zshrc"
 alias zsh-edit="code ~/.zshrc"
 
 alias python="python3"
+
+# / Terraform
+alias tf="terraform"
+alias tfa="terraform apply"
+alias tfd="terraform destroy"
+alias tfp="terraform plan"
+alias tfi="terraform init"
+
+# / Ansible
+alias a="ansible"
+alias ap="ansible-playbook"
+alias al="ansible-lint"
+
+# / Kubernetes
+alias k="kubectl"
+alias kx="kubectx"
+alias kn="kubens"
+alias kgp="kubectl get pods"
+alias kgs="kubectl get svc"
+alias kgd="kubectl get deployments"
+alias kl="kubectl logs -f"
 
 alias cat="bat --style=plain"
 
@@ -75,7 +122,7 @@ alias dlp1440mkv='yt-dlp -P "$HOME/Desktop" -f "bestvideo[height<=1440]+bestaudi
 alias dlp4kmkv='yt-dlp -P "$HOME/Desktop" -f "bestvideo[height<=2160]+bestaudio/best" --merge-output-format mkv'
 
 
-# 6// Misc
+# 8// Misc
 # / bat (best matched with my wezterm colors)
 export BAT_THEME="Dracula"
 
@@ -113,27 +160,12 @@ if command -v fzf 1>/dev/null 2>&1; then
 fi
 
 
-# 7// Completions
-# The following lines have been added by Docker Desktop to enable Docker CLI completions
-if [ -d "$HOME/.docker/completions" ]; then
-  fpath=($HOME/.docker/completions $fpath)
-fi
-
-# / Initialize Zsh completions
-autoload -Uz compinit
-if [[ -n ${ZDOTDIR:-$HOME}/.zcompdump(#qN.mh+24) || ! -f ${ZDOTDIR:-$HOME}/.zcompdump ]]; then
-  compinit
-else
-  compinit -C
-fi
-
-
-# 8// Plugin configurations
+# 9// Plugin configurations
 # / zsh-autosuggestions suggestion color
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=cyan'
 
 
-# 9// Source plugins in strict order
+# 10// Source plugins in strict order
 # / zsh-autosuggestions
 source $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 # / zsh-syntax-highlighting ALWAYS at the end
