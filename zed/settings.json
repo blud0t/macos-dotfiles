@@ -1,4 +1,7 @@
 {
+  "session": {
+    "trust_all_worktrees": true
+  },
   "theme": "Purple Fizz",
   "icon_theme": "Material Icon Theme",
   "project_panel": {
@@ -9,20 +12,20 @@
     "metrics": false
   },
   "buffer_font_size": 15,
-  "buffer_font_family": "Vertex Mono NF",
+  "buffer_font_family": "CaskaydiaMono Nerd Font",
   "buffer_font_features": { "liga": false, "calt": false },
   "cursor_shape": "bar",
   "cursor_blink": true,
   "format_on_save": "on",
   "formatter": "auto",
-  "ui_font_family": "Vertex Mono NF",
+  "ui_font_family": "CaskaydiaMono Nerd Font",
   "ui_font_size": 16,
   "indent_guides": {
     "enabled": true
   },
   "terminal": {
     "dock": "bottom",
-    "font_family": "Vertex Mono NF",
+    "font_family": "CaskaydiaMono Nerd Font",
     "font_size": 16,
     "blinking": "on",
     "cursor_shape": "bar"
